@@ -1,0 +1,29 @@
+{
+  "name": "bedrock-web-key-store",
+  "version": "0.1.0-0",
+  "description": "Remote key storage for Bedrock Web apps",
+  "main": "index.js",
+  "dependencies": {
+    "bedrock-web-private-remote-storage": "digitalbazaar/bedrock-web-private-remote-storage#implementation",
+    "node-forge": "^0.7.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-web-key-store"
+  },
+  "keywords": [
+    "bedrock"
+  ],
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-web-key-store/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-web-key-store",
+  "bedrock": {
+    "browserDependencies": "all"
+  }
+}

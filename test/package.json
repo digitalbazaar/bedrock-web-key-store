@@ -1,0 +1,32 @@
+{
+  "name": "bedrock-web-key-store-test",
+  "version": "0.0.1-0",
+  "description": "Remote key storage for Bedrock Web apps test",
+  "private": true,
+  "scripts": {
+    "test": "node --preserve-symlinks test.js test --framework karma"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-web-key-store"
+  },
+  "keywords": [
+    "bedrock"
+  ],
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-web-key-store/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-web-key-store",
+  "dependencies": {
+    "axios-mock-adapter": "^1.15.0",
+    "bedrock": "^1.0.0",
+    "bedrock-karma": "^1.0.0",
+    "bedrock-test": "^2.0.0",
+    "bedrock-web-key-store": "file:.."
+  }
+}
