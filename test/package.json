@@ -27,6 +27,7 @@
     "bedrock": "^1.0.0",
     "bedrock-karma": "^1.0.0",
     "bedrock-test": "^2.0.0",
-    "bedrock-web-key-store": "file:.."
+    "bedrock-web-key-store": "file:..",
+    "bedrock-web-mock-private-remote-storage": "^1.0.0"
   }
 }
