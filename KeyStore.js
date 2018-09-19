@@ -120,9 +120,11 @@ export class KeyStore {
       throw new TypeError('"owner" must be a string or an array of strings.');
     }
 
-    const equals = owner.map(owner => {owner});
-    const keyDocs = this.remoteStorage({equals});
+    const {remoteStorage} = this;
+    const equals = owner.map(owner => ({owner}));
+    const keyDocs = await remoteStorage.find({equals});
     return keyDocs.map(keyDoc => {
+      const {id} = keyDoc;
       const result = new SignatureKeyPair({id, remoteStorage});
       result._init({keyDoc});
       return result;

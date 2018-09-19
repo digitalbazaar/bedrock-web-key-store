@@ -1,6 +1,8 @@
 /*!
  * Copyright (c) 2018 Digital Bazaar, Inc. All rights reserved.
  */
+'use strict';
+
 import {store, MemoryEngine} from 'bedrock-web-store';
 import {getKeyStore} from 'bedrock-web-key-store';
 import {getRemoteStorage} from 'bedrock-web-private-remote-storage';
@@ -42,5 +44,43 @@ describe('KeyStore', () => {
     }
     should.exist(err);
     err.name.should.equal('DuplicateError');
+  });
+
+  it('should get a key', async () => {
+    const keyStore = await getKeyStore({accountId: 'test'});
+    const key = await keyStore.get({id: 'key1'});
+    should.exist(key.exportPublicKey);
+    should.exist(key.sign);
+    should.exist(key.verify);
+    key.exportPublicKey.should.be.a('function');
+    key.sign.should.be.a('function');
+    key.verify.should.be.a('function');
+  });
+
+  it('should fail to get an unknown key', async () => {
+    const keyStore = await getKeyStore({accountId: 'test'});
+    let err;
+    try {
+      await keyStore.get({id: 'does-not-exist'});
+    } catch(e) {
+      err = e;
+    }
+    should.exist(err);
+    err.name.should.equal('NotFoundError');
+  });
+
+  it('should find a key by its owner', async () => {
+    const keyStore = await getKeyStore({accountId: 'test'});
+    const keys = await keyStore.find({owner: 'test'});
+    should.exist(keys);
+    keys.should.be.an('array');
+    keys.length.should.equal(1);
+    const key = keys[0];
+    should.exist(key.exportPublicKey);
+    should.exist(key.sign);
+    should.exist(key.verify);
+    key.exportPublicKey.should.be.a('function');
+    key.sign.should.be.a('function');
+    key.verify.should.be.a('function');
   });
 });

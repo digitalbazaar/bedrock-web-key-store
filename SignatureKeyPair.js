@@ -85,7 +85,7 @@ export class SignatureKeyPair {
     // private storage is remote, so use private key from cache
     const {privateKey} = await this.cache.get({privateKey: true});
     return ed25519.sign({
-      message: data,
+      message: digest,
       privateKey
     });
   }
@@ -118,7 +118,7 @@ export class SignatureKeyPair {
     // storage type is remote, so use local cache to get key and verify
     const {publicKey} = await this.cache.get();
     return ed25519.verify({
-      message: data,
+      message: digest,
       signature,
       publicKey
     });
