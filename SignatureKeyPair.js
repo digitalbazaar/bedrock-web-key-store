@@ -75,7 +75,7 @@ export class SignatureKeyPair {
       data = _strToUint8Array(data);
     }
 
-    const digest = await crypto.subtle.digest(hash, data);
+    const digest = new Uint8Array(await crypto.subtle.digest(hash, data));
 
     if(this.cache.privateStorage === 'webauthn') {
       // TODO: implement webauthn
@@ -83,7 +83,7 @@ export class SignatureKeyPair {
     }
 
     // private storage is remote, so use private key from cache
-    const {privateKey} = await this.cache.get({privateKey: true});
+    const {privateKey} = await this.cache.get({includePrivateKey: true});
     return ed25519.sign({
       message: digest,
       privateKey
@@ -108,7 +108,7 @@ export class SignatureKeyPair {
       data = _strToUint8Array(data);
     }
 
-    const digest = await crypto.subtle.digest(hash, data);
+    const digest = new Uint8Array(await crypto.subtle.digest(hash, data));
 
     if(this.cache.privateStorage === 'webauthn') {
       // TODO: implement webauthn

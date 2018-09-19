@@ -3,7 +3,7 @@
  */
 'use strict';
 
-export const KEY_DOC_TYPE = 'KeyPair;'
+export const KEY_DOC_TYPE = 'KeyPair';
 
 export const SECURITY_CONTEXT = 'https://w3id.org/security/v2';
 

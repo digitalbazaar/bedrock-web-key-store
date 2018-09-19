@@ -40,12 +40,16 @@ export class SignatureKeyPairCache {
     this.timerId = setTimeout(this.clear.bind(this), timeout);
   }
 
-  async get({privateKey, timeout = DEFAULT_KEY_TIMEOUT}) {
+  async get({includePrivateKey = false, timeout = DEFAULT_KEY_TIMEOUT} = {}) {
     if(this.keyDoc) {
       // key in cache, load it
-      const {privateStorage, owner, algorithm} = this.keyDoc;
+      const {id, owner, algorithm, publicKeyBase58} = this.keyDoc;
+      const publicKey = base58.decode(publicKeyBase58);
+      /* ed25519 not available in WebCrypto API yet
+      const publicKey = await crypto.subtle.importKey(
+        'raw', publicKey, 'ed25519', false, ['verify']); */
       const result = {id, algorithm, owner, publicKey, publicKeyBase58};
-      if(privateKey) {
+      if(includePrivateKey) {
         result.privateKey = this.privateKey;
       }
       this.resetTimeout({timeout});
@@ -54,10 +58,10 @@ export class SignatureKeyPairCache {
 
     // update cache with fresh key doc from remote storage
     const keyDoc = await this.remoteStorage.get({id: this.id});
-    await this._update(keyDoc);
+    await this._update({keyDoc, timeout});
 
     // return cached value
-    return this.get({privateKey, timeout});
+    return this.get({includePrivateKey, timeout});
   }
 
   async _update({keyDoc, timeout = DEFAULT_KEY_TIMEOUT}) {
@@ -66,12 +70,11 @@ export class SignatureKeyPairCache {
       throw new Error('Invalid key.');
     }
 
+    this.clear();
     this.keyDoc = keyDoc;
     this.privateStorage = keyDoc.privateStorage;
-    this.clear();
 
     // load private key if stored remotely
-    let privateKey = null;
     if(keyDoc.privateStorage === 'remote') {
       const privateKey = base58.decode(keyDoc.privateKeyBase58);
       /* ed25519 not available in WebCrypto API yet

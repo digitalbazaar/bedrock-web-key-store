@@ -5,8 +5,6 @@ import {store, MemoryEngine} from 'bedrock-web-store';
 import {getKeyStore} from 'bedrock-web-key-store';
 import {mock} from './mock.js';
 
-const password = 'password';
-
 describe('getKeyStore', () => {
   before(() => {
     store.setEngine({engine: new MemoryEngine()});
