@@ -1,0 +1,53 @@
+{
+  "name": "bedrock-web-kms-test",
+  "version": "0.0.1-0",
+  "description": "Bedrock Web private remote storage test",
+  "private": true,
+  "scripts": {
+    "test": "node --preserve-symlinks test.js test --framework mocha --framework karma"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-web-kms"
+  },
+  "keywords": [
+    "bedrock"
+  ],
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-web-kms/issues"
+  },
+  "homepage": "https://github.com/digitalbazaar/bedrock-web-kms",
+  "dependencies": {
+    "bedrock": "^1.15.0",
+    "bedrock-account": "^1.0.0",
+    "bedrock-data-hub-storage": "github:digitalbazaar/bedrock-data-hub-storage#initial",
+    "bedrock-did-client": "^1.1.2",
+    "bedrock-express": "^2.0.8",
+    "bedrock-identity": "^5.0.0",
+    "bedrock-karma": "^1.4.0",
+    "bedrock-key": "^5.1.2",
+    "bedrock-kms": "github:digitalbazaar/bedrock-kms#generateKeyPair",
+    "bedrock-kms-http": "digitalbazaar/bedrock-kms-http#initial",
+    "bedrock-mongodb": "^5.5.0",
+    "bedrock-package-manager": "^1.0.0",
+    "bedrock-passport": "^4.0.2",
+    "bedrock-permission": "^2.5.0",
+    "bedrock-security-context": "^1.0.0",
+    "bedrock-server": "^2.3.2",
+    "bedrock-ssm-mongodb": "github:digitalbazaar/bedrock-ssm-mongodb#generateKeyPair",
+    "bedrock-test": "^2.0.0",
+    "bedrock-validation": "^4.1.0",
+    "bedrock-web-data-hub": "^1.0.1",
+    "bedrock-web-key-store": "file:..",
+    "bedrock-web-kms": "digitalbazaar/bedrock-web-kms#did-veres-one",
+    "crypto-ld": "^3.5.1",
+    "did-veres-one": "veres-one/did-veres-one#kmsApi",
+    "jsonld-signatures": "^4.0.2",
+    "ocapld": "^1.1.0"
+  }
+}
