@@ -9,5 +9,7 @@ require('bedrock-kms-http');
 require('bedrock-ssm-mongodb');
 require('bedrock-karma');
 
+require('./setup-accounts');
+
 require('bedrock-test');
 bedrock.start();

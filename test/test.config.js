@@ -5,6 +5,7 @@
 
 const {config} = require('bedrock');
 const path = require('path');
+const {permissions, roles} = config.permission;
 
 config.karma.suites['bedrock-web-key-store'] = path.join('web', '**', '*.js');
 
@@ -25,3 +26,21 @@ config.mongodb.name = 'bedrock_web_key_store_test';
 config.mongodb.dropCollections = {};
 config.mongodb.dropCollections.onInit = true;
 config.mongodb.dropCollections.collections = [];
+
+roles['bedrock-account.regular'] = {
+  id: 'bedrock-account.regular',
+  label: 'Account Test Role',
+  comment: 'Role for Test User',
+  sysPermission: [
+    permissions.ACCOUNT_ACCESS.id,
+    permissions.ACCOUNT_UPDATE.id,
+    permissions.ACCOUNT_INSERT.id,
+    permissions.DATA_HUB_CONFIG_ACCESS.id,
+    permissions.DATA_HUB_CONFIG_UPDATE.id,
+    permissions.DATA_HUB_CONFIG_REMOVE.id,
+    permissions.DATA_HUB_STORAGE_ACCESS.id,
+    permissions.DATA_HUB_DOCUMENT_ACCESS.id,
+    permissions.DATA_HUB_DOCUMENT_UPDATE.id,
+    permissions.DATA_HUB_DOCUMENT_REMOVE.id
+  ]
+};

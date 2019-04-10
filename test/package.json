@@ -24,11 +24,11 @@
   "homepage": "https://github.com/digitalbazaar/bedrock-web-kms",
   "dependencies": {
     "bedrock": "^1.15.0",
-    "bedrock-account": "^1.0.0",
+    "bedrock-account": "^2.1.0",
     "bedrock-data-hub-storage": "github:digitalbazaar/bedrock-data-hub-storage#initial",
     "bedrock-did-client": "^1.1.2",
     "bedrock-express": "^2.0.8",
-    "bedrock-identity": "^5.0.0",
+    "bedrock-identity": "^6.0.0",
     "bedrock-karma": "^1.4.0",
     "bedrock-key": "^5.1.2",
     "bedrock-kms": "github:digitalbazaar/bedrock-kms#generateKeyPair",

@@ -14,7 +14,7 @@ describe('describe', () => {
   before(async () => {
     const kmsPlugin = 'ssm-v1';
     const kmsService = new KmsService();
-    const accountId = 'urn:foo';
+    const accountId = 'urn:uuid:e534fa02-b136-4ff1-943d-4f88458f6324';
     const kmsApi = await AccountMasterKey.fromSecret({
       accountId,
       kmsPlugin,
@@ -42,6 +42,14 @@ describe('describe', () => {
   });
 
   it('does something', async () => {
-    keyStore.insert({id: 'https://example.com/foo'});
+    const id = 'https://example.com/foo';
+    await keyStore.insert({key: {
+      id,
+      content: {
+        boo: 'hello'
+      }
+    }});
+    const result = await keyStore.get({id});
+    console.log('KEY FROM STORAGE', JSON.stringify(result, null, 2));
   });
 });
