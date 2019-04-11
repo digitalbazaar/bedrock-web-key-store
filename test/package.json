@@ -1,27 +1,10 @@
 {
-  "name": "bedrock-web-kms-test",
+  "name": "bedrock-web-key-store-test",
   "version": "0.0.1-0",
-  "description": "Bedrock Web private remote storage test",
   "private": true,
   "scripts": {
-    "test": "node --preserve-symlinks test.js test --framework mocha --framework karma"
+    "test": "node --preserve-symlinks test.js test --framework karma"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/digitalbazaar/bedrock-web-kms"
-  },
-  "keywords": [
-    "bedrock"
-  ],
-  "author": {
-    "name": "Digital Bazaar, Inc.",
-    "email": "support@digitalbazaar.com",
-    "url": "https://digitalbazaar.com"
-  },
-  "bugs": {
-    "url": "https://github.com/digitalbazaar/bedrock-web-kms/issues"
-  },
-  "homepage": "https://github.com/digitalbazaar/bedrock-web-kms",
   "dependencies": {
     "bedrock": "^1.15.0",
     "bedrock-account": "^2.1.0",
