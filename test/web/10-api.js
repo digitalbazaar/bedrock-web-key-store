@@ -59,6 +59,9 @@ describe('describe', () => {
     const {content: keyFromStorage} = await keyStore.get({id: ed25519Key.id});
 
     keyFromStorage.should.eql(keyData);
-    console.log('KEY FROM STORAGE', JSON.stringify(keyFromStorage, null, 2));
+
+    const keyInstanceFromStorage = await kmsApi.keyFromStorage(keyFromStorage);
+
+    keyInstanceFromStorage.export().should.eql(keyData);
   });
 });
