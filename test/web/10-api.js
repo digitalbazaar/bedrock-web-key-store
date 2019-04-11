@@ -9,13 +9,14 @@ import {AccountMasterKey, KmsService} from 'bedrock-web-kms';
 import {DataHub, DataHubService} from 'bedrock-web-data-hub';
 
 let keyStore;
+let kmsApi;
 
 describe('describe', () => {
   before(async () => {
     const kmsPlugin = 'ssm-v1';
     const kmsService = new KmsService();
     const accountId = 'urn:uuid:e534fa02-b136-4ff1-943d-4f88458f6324';
-    const kmsApi = await AccountMasterKey.fromSecret({
+    kmsApi = await AccountMasterKey.fromSecret({
       accountId,
       kmsPlugin,
       kmsService,
@@ -41,15 +42,23 @@ describe('describe', () => {
     keyStore = new KeyStore({hub});
   });
 
-  it('does something', async () => {
-    const id = 'https://example.com/foo';
+  it('stores and retrieves a key', async () => {
+    const ed25519Key = await kmsApi.generateKey(
+      {type: 'Ed25519VerificationKey2018'});
+
+    // set the public key ID
+    ed25519Key.id = 'urn:uuid:c47f1b83-be7d-44b5-b5e1-901c5ec2caa9';
+
+    const keyData = ed25519Key.export();
+
     await keyStore.insert({key: {
-      id,
-      content: {
-        boo: 'hello'
-      }
+      // id is the public ID
+      id: ed25519Key.id,
+      content: keyData
     }});
-    const result = await keyStore.get({id});
-    console.log('KEY FROM STORAGE', JSON.stringify(result, null, 2));
+    const {content: keyFromStorage} = await keyStore.get({id: ed25519Key.id});
+
+    keyFromStorage.should.eql(keyData);
+    console.log('KEY FROM STORAGE', JSON.stringify(keyFromStorage, null, 2));
   });
 });
