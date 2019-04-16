@@ -21,6 +21,9 @@ proxies['/'] = {
 // if changeOrigin is not useful, then simpler syntax is available
 //proxies['/'] = config.server.baseUri;
 
+// do not require an authenticated session for KMS operations
+config['kms-http'].requireAuthentication = false;
+
 // MongoDB
 config.mongodb.name = 'bedrock_web_key_store_test';
 config.mongodb.dropCollections = {};
