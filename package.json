@@ -1,0 +1,28 @@
+{
+  "name": "bedrock-web-key-store",
+  "version": "0.0.1-0",
+  "description": "Bedrock key storage.",
+  "homepage": "https://github.com/digitalbazaar/bedrock-web-key-store",
+  "author": {
+    "name": "Digital Bazaar, Inc.",
+    "email": "support@digitalbazaar.com",
+    "url": "https://digitalbazaar.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/digitalbazaar/bedrock-web-key-store"
+  },
+  "bugs": {
+    "url": "https://github.com/digitalbazaar/bedrock-web-key-store/issues",
+    "email": "support@digitalbazaar.com"
+  },
+  "main": "lib",
+  "files": [
+    "lib/"
+  ],
+  "dependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-digitalbazaar": "^2.0.0",
+    "eslint-plugin-jsdoc": "^4.8.3"
+  }
+}
